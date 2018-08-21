@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.hp_pc.niyoktahr.Profile">
+
+    <ImageView
+        android:layout_height="110dp" app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/ivProfilepic"
+        android:layout_width="110dp"
+        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent" android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+        app:layout_constraintVertical_bias="0.04000002"
+          />
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEducation" android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilepic" android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent" android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintVertical_bias="0.13"/>
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSkills"
+        android:textSize="50sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEducation"
+        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="16dp"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintVertical_bias="0.120000005"/>
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvJobs" android:textSize="24sp" android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent" android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSkills"
+        app:layout_constraintVertical_bias="0.110000014" app:layout_constraintHorizontal_bias="0.37"/>
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bteditprofile"
+        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tvJobs"
+        app:layout_constraintVertical_bias="0.060000002"/>
+
+    <Button
+        android:text="ChangePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btchangePassword"
+        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/bteditprofile"/>
+</android.support.constraint.ConstraintLayout>
