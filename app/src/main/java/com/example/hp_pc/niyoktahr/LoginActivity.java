@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                   startActivity(new Intent(LoginActivity.this, Fill_details.class));
+                   startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
                 }
             }
         };
@@ -210,7 +210,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
 
             mProgressDialog.dismiss();
-            startActivity(new Intent(LoginActivity.this, Fill_details.class));
+            startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
         } else {
 
             Toast.makeText(LoginActivity.this, "please verify email", Toast.LENGTH_SHORT).show();

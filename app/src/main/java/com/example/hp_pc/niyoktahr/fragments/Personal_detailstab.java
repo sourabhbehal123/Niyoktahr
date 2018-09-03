@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr;
+package com.example.hp_pc.niyoktahr.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hp_pc.niyoktahr.MainActivity;
+import com.example.hp_pc.niyoktahr.R;
+import com.example.hp_pc.niyoktahr.UserProfile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -82,7 +85,7 @@ public class Personal_detailstab extends Fragment {
     }
     private void sendUserDetails() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference myRef = firebaseDatabase.getReference("employee");
 
         name = education.getText().toString();
 
@@ -90,7 +93,7 @@ public class Personal_detailstab extends Fragment {
         dateofbirth = jobs.getText().toString();
         UserProfile userProfile = new UserProfile(name, loaction, dateofbirth);
 
-        myRef.child("students").setValue(userProfile);
+        myRef.child(firebaseAuth.getCurrentUser().getUid()).child("Personal details").setValue(userProfile);
 
 
     }

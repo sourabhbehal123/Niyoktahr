@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr;
+package com.example.hp_pc.niyoktahr.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hp_pc.niyoktahr.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -60,13 +61,13 @@ public class Educational_detailstab extends Fragment {
     }
     private void sendUserDetails() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
-       course  = education.getText().toString();
+        DatabaseReference myRef = firebaseDatabase.getReference("employee");
+        course  = education.getText().toString();
 
         university = skills.getText().toString();
         qualifiactions= jobs.getText().toString();
         Education_constructor userProfile = new Education_constructor(course,university,qualifiactions);
-        myRef.child("eduaction details").setValue(userProfile);
+        myRef.child(firebaseAuth.getCurrentUser().getUid()).child("eduaction details").setValue(userProfile);
 
 
     }

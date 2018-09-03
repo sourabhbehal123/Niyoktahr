@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr;
+package com.example.hp_pc.niyoktahr.fragments;
 
 /**
  * Created by hp-pc on 8/18/2018.

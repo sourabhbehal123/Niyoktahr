@@ -61,7 +61,7 @@ public class Secondpage extends AppCompatActivity {
                 sendUserDetails();
                 Toast.makeText(Secondpage.this, "yesss", Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(Secondpage.this, Secondone.class));
+                startActivity(new Intent(Secondpage.this, MainActivity.class));
             }
         });
 

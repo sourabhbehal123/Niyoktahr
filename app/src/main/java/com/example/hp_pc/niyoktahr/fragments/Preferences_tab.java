@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr;
+package com.example.hp_pc.niyoktahr.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.hp_pc.niyoktahr.MainActivity;
+import com.example.hp_pc.niyoktahr.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,7 +43,7 @@ public class Preferences_tab extends Fragment {
             @Override
             public void onClick(View v) {
                 sendUserDetails();
-                Intent intent = new Intent(getActivity(), Secondone.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,13 +55,13 @@ public class Preferences_tab extends Fragment {
     }
     private void sendUserDetails() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference myRef = firebaseDatabase.getReference("employee");
        city111  = city1.getText().toString();
 
         city12 = city2.getText().toString();
         city13= city3.getText().toString();
         PreferencesConstructor userProfile = new PreferencesConstructor(city111,city12,city13);
-        myRef.child("Preferences").setValue(userProfile);
+        myRef.child(firebaseAuth.getCurrentUser().getUid()).child("Preferences details").setValue(userProfile);
 
 
     }

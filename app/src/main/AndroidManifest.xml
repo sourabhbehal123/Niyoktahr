@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/navigationtheme">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,10 +21,6 @@
         </activity>
         <activity android:name=".Secondpage">
         </activity>
-        <activity
-            android:name=".Secondone"
-            android:theme="@style/navigationtheme">
-        </activity>
         <activity android:name=".Register">
         </activity>
         <activity android:name=".Password_activity">
@@ -34,9 +30,21 @@
         <activity android:name=".UpdatePassword">
         </activity>
         <activity
-            android:name=".Fill_details"
+            android:name=".fragments.Fill_details"
             android:label="@string/title_activity_fill_details"
             android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".employee_or_employer">
+        </activity>
+        <activity
+            android:name=".employer_fragment.Employer_detail"
+            android:label="@string/title_activity_employer_detail"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".job_posting"
+                  android:theme="@style/AppTheme"
+        >
+
         </activity>
     </application>
 

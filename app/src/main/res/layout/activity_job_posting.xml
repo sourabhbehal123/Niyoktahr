@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_job_posting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="com.example.hp_pc.niyoktahr.job_posting">
+    <EditText
+        android:id="@+id/note_title"
+        android:background="@drawable/edit_file"
+        android:hint="Job Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:ems="10" android:inputType="textPersonName"
+        android:singleLine="true" android:layout_marginTop="20dp"/>
+    <EditText
+        android:hint="Job Describtion"
+        android:background="@drawable/edit_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/note_content"
+        android:gravity="top" android:layout_marginTop="20dp"/>
+    <EditText
+        android:background="@drawable/edit_file"
+        android:hint="Salary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/note_details"
+        android:gravity="top" android:layout_marginTop="20dp"/>
+    <Button
+        android:background="@drawable/button_style"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btjobsubmit"
+        android:text="SUBMIT" android:layout_marginTop="100dp"/>
+
+
+
+</LinearLayout>

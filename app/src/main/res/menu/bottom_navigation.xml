@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      >
+    <item
+
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"
+        app:showAsAction="collapseActionView"
+        ></item>
+    <item
+        android:id="@+id/action_apply"
+        android:enabled="true"
+        android:icon="@drawable/ic_mail_black_24dp"
+        android:title="Apply"
+        app:showAsAction="collapseActionView"
+    ></item>
+       <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile"
+        app:showAsAction="collapseActionView"
+    ></item>
+
+
+
+</menu>

@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr;
+package com.example.hp_pc.niyoktahr.employer_fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,7 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Fill_details extends AppCompatActivity {
+import com.example.hp_pc.niyoktahr.R;
+import com.example.hp_pc.niyoktahr.employer1;
+
+public class Employer_detail extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -31,11 +34,7 @@ public class Fill_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fill_details);
-        //FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-       // ft.add(R.id.container,new Personal_detailstab());
-        //ft.commit();
-
+        setContentView(R.layout.activity_employer_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,14 +49,13 @@ public class Fill_details extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_fill_details, menu);
+        getMenuInflater().inflate(R.menu.menu_employer_detail, menu);
         return true;
     }
 
@@ -76,6 +74,9 @@ public class Fill_details extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * A placeholder fragment containing a simple view.
+     */
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -91,35 +92,34 @@ public class Fill_details extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    Personal_detailstab tab1=new Personal_detailstab();
+                    employer1 tab1=new employer1();
                     return tab1;
                 case 1:
-                    Educational_detailstab tab2=new Educational_detailstab();
+                    employer2 tab2=new employer2();
                     return tab2;
                 case 2:
-                    Preferences_tab tab3=new Preferences_tab();
+                    employer3 tab3=new employer3();
                     return tab3;
                 default:
-            return null;
-        }
-
+                    return null;
+            }
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "personal";
+                    return "Personal DetAILS";
                 case 1:
-                    return "eduaction";
+                    return "organization details";
                 case 2:
-                    return "preferences";
+                    return "SECTION 3";
             }
             return null;
         }
