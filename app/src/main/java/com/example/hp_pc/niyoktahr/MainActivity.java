@@ -58,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this,Profile.class));
+                        startActivity(new Intent(MainActivity.this,settings.class));
                         break;
+
 
                 }
                 return true;
@@ -95,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
                              //  Intent i=new Intent(MainActivity.this,job_posting.class);
                                // i.putExtra("hh",model.get(viewHolder.getAdapterPosition()).)
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                DatabaseReference myRef = firebaseDatabase.getReference("employee");
+
+                                jobViewHolder userProfile = new jobViewHolder(viewHolder.mView);
+
+                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").child("1").setValue(userProfile.mView.toString());
+
+                                viewHolder.mButton.setEnabled(false);
+
 
                             }
                         });

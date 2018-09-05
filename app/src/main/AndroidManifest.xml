@@ -41,10 +41,12 @@
             android:label="@string/title_activity_employer_detail"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".job_posting"
-                  android:theme="@style/AppTheme"
-        >
-
+        <activity
+            android:name=".job_posting"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".settings"
+        android:theme="@style/navigationtheme">
         </activity>
     </application>
 

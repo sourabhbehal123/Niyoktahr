@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
     private ImageView profilepic;
     private TextView profileeduaction,profileskills,profilejobs,profilecourse,profileuniversity,profilequal;
-    private Button profileUpdate,changepassword;
+    private Button profileUpdate;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
@@ -31,19 +31,14 @@ public class Profile extends AppCompatActivity {
         profilepic=(ImageView)findViewById(R.id.ivProfilepic);
         profileeduaction=(TextView)findViewById(R.id.tvEducation);
         profileskills=(TextView)findViewById(R.id.tvSkills);
-        changepassword=(Button)findViewById(R.id.btchangePassword);
+
        // profilecourse=(TextView)findViewById(R.id.tvcourse);
         ///profileuniversity=(TextView)findViewById(R.id.tvuniversity);
         //profilequal=(TextView)findViewById(R.id.tvQualification);
 
         profilejobs=(TextView)findViewById(R.id.tvJobs);
         profileUpdate=(Button)findViewById(R.id.bteditprofile);
-        changepassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Profile.this,UpdatePassword.class));
-            }
-        });
+
         profileUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
