@@ -35,6 +35,7 @@ public class job_posting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                sendUserDetails();
+                sendDetails();
                 Toast.makeText(job_posting.this, "Submited", Toast.LENGTH_SHORT).show();
             }
         });
@@ -44,11 +45,23 @@ public class job_posting extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference("jobs");
         jobTitle = mEditTitle.getText().toString();
-
+         String userid= mFirebaseAuth.getCurrentUser().getUid();
         jobDescription = mEditcontent.getText().toString();
         salary = mEditdetails.getText().toString();
-        jobpost_constructor userProfile = new jobpost_constructor(jobTitle,jobDescription,salary);
-        myRef.child(mFirebaseAuth.getCurrentUser().getUid()).setValue(userProfile);
+        jobpost_constructor userProfile = new jobpost_constructor(jobTitle,jobDescription,salary,userid);
+        myRef.push().setValue(userProfile);
+
+
+    }
+    private void sendDetails() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = firebaseDatabase.getReference("job");
+        jobTitle = mEditTitle.getText().toString();
+        String userid= mFirebaseAuth.getCurrentUser().getUid();
+        jobDescription = mEditcontent.getText().toString();
+        salary = mEditdetails.getText().toString();
+        jobpost_constructor userProfile = new jobpost_constructor(jobTitle,jobDescription,salary,userid);
+        myRef.child(mFirebaseAuth.getCurrentUser().getUid()).push().setValue(userProfile);
 
 
     }

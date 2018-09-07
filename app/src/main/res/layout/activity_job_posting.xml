@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_job_posting"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context="com.example.hp_pc.niyoktahr.job_posting">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
     <EditText
         android:id="@+id/note_title"
         android:background="@drawable/edit_file"
@@ -39,6 +45,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/btjobsubmit"
         android:text="SUBMIT" android:layout_marginTop="100dp"/>
+        </LinearLayout>
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_naviagtion_view"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/colorPrimaryDark"
+            app:itemIconTint="@drawable/item_icon_state"
+            app:itemTextColor="@drawable/item_icon_state"
+            app:menu="@menu/bottom_navigation"
+
+        ></android.support.design.widget.BottomNavigationView>
+    </LinearLayout>
 
 
 

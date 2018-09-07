@@ -9,13 +9,17 @@ public class jobpost_constructor{
         public String jobDescription;
     public String salary;
 
-    public jobpost_constructor(String jobTitle, String jobDescription, String salary) {
+    public String userid;
+
+
+    public jobpost_constructor() {
+    }
+
+    public jobpost_constructor(String jobTitle, String jobDescription, String salary, String userid) {
         this.jobTitle = jobTitle;
         this.jobDescription = jobDescription;
         this.salary = salary;
-    }
-
-    public jobpost_constructor() {
+        this.userid = userid;
     }
 
     public String getJobTitle() {

@@ -67,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("/jobs");
+//      final String userid= mAuth.getCurrentUser().getUid();
+   //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
+     mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
+     //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
         mDatabaseReference.keepSynced(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.main_job_post);
         mRecyclerView.setHasFixedSize(true);
@@ -101,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 jobViewHolder userProfile = new jobViewHolder(viewHolder.mView);
 
-                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").child("1").setValue(userProfile.mView.toString());
+                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").push().setValue(userProfile.mView.toString());
 
-                                viewHolder.mButton.setEnabled(false);
+                              //  viewHolder.mButton.setEnabled(false);
 
 
                             }
