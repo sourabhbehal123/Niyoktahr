@@ -5,42 +5,57 @@ package com.example.hp_pc.niyoktahr;
  */
 
 public class UserProfile {
-    public String name;
-    public String location;
-    public String dateofbirth;
+    public String  personal_namecon , personal_emailcon , personal_locationcon, personal_phonecon , personal_dobcon;
 
+    public UserProfile(String personal_namecon, String personal_emailcon, String personal_locationcon, String personal_phonecon, String personal_dobcon) {
+        this.personal_namecon = personal_namecon;
+        this.personal_emailcon = personal_emailcon;
+        this.personal_locationcon = personal_locationcon;
+        this.personal_phonecon = personal_phonecon;
+        this.personal_dobcon = personal_dobcon;
+    }
 
     public UserProfile() {
     }
 
-    public UserProfile(String name, String dateofbirth, String location) {
-        this.name = name;
-        this.dateofbirth = dateofbirth;
-        this.location = location;
+    public String getPersonal_namecon() {
+        return personal_namecon;
     }
 
-    public String getName() {
-        return name;
+    public void setPersonal_namecon(String personal_namecon) {
+        this.personal_namecon = personal_namecon;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPersonal_emailcon() {
+        return personal_emailcon;
     }
 
-    public String getLocation() {
-        return location;
+    public void setPersonal_emailcon(String personal_emailcon) {
+        this.personal_emailcon = personal_emailcon;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getPersonal_locationcon() {
+        return personal_locationcon;
     }
 
-    public String getDateofbirth() {
-        return dateofbirth;
+    public void setPersonal_locationcon(String personal_locationcon) {
+        this.personal_locationcon = personal_locationcon;
     }
 
-    public void setDateofbirth(String dateofbirth) {
-        this.dateofbirth = dateofbirth;
+    public String getPersonal_phonecon() {
+        return personal_phonecon;
+    }
+
+    public void setPersonal_phonecon(String personal_phonecon) {
+        this.personal_phonecon = personal_phonecon;
+    }
+
+    public String getPersonal_dobcon() {
+        return personal_dobcon;
+    }
+
+    public void setPersonal_dobcon(String personal_dobcon) {
+        this.personal_dobcon = personal_dobcon;
     }
 }
 

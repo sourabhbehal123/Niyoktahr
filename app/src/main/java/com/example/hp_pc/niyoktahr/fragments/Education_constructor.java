@@ -5,37 +5,56 @@ package com.example.hp_pc.niyoktahr.fragments;
  */
 
 public class Education_constructor {
-    public String course;
-    public String university;
-    public String qualifications;
+   public String qualification , language , skills , passing_year ,college;
 
-    public Education_constructor(String course, String university, String qualifications) {
-        this.course = course;
-        this.university = university;
-        this.qualifications = qualifications;
+    public Education_constructor(String qualification, String language, String skills, String passing_year, String college) {
+        this.qualification = qualification;
+        this.language = language;
+        this.skills = skills;
+        this.passing_year = passing_year;
+        this.college = college;
     }
 
-    public String getCourse() {
-        return course;
+    public Education_constructor() {
     }
 
-    public void setCourse(String course) {
-        this.course = course;
+    public String getQualification() {
+        return qualification;
     }
 
-    public String getUniversity() {
-        return university;
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
     }
 
-    public void setUniversity(String university) {
-        this.university = university;
+    public String getLanguage() {
+        return language;
     }
 
-    public String getQualifications() {
-        return qualifications;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+
+    public String getPassing_year() {
+        return passing_year;
+    }
+
+    public void setPassing_year(String passing_year) {
+        this.passing_year = passing_year;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
     }
 }

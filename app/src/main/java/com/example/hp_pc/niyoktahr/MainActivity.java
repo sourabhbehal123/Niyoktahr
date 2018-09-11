@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     UserProfile userProfile;
     private RecyclerView mRecyclerView;
     private DatabaseReference mDatabaseReference;
+    public String remove;
+
 
 
     @Override
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_apply:
+                        startActivity(new Intent(MainActivity.this,employee_applied_jobs.class));
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
 
                         break;
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
-//      final String userid= mAuth.getCurrentUser().getUid();
+    // final String userid= mAuth.getCurrentUser().getUid();
    //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
      mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
      //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
@@ -75,19 +78,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.main_job_post);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        opening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // mAuth.addAuthStateListener(mAuthStateListener);
         FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder> firebaseRecyclerAdapter = new
                 FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder>
                         (jobpost_constructor.class, R.layout.recycleview_design, jobViewHolder.class, mDatabaseReference) {
                     @Override
-                    protected void populateViewHolder(final jobViewHolder viewHolder, final jobpost_constructor model, int position) {
+                    protected void populateViewHolder(final jobViewHolder viewHolder, final jobpost_constructor model, final int position) {
                         viewHolder.setTitle(model.getJobTitle());
                         viewHolder.setProfession(model.getJobDescription());
                         viewHolder.setJob(model.getSalary());
@@ -97,16 +92,14 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
-                             //  Intent i=new Intent(MainActivity.this,job_posting.class);
-                               // i.putExtra("hh",model.get(viewHolder.getAdapterPosition()).)
+
+
                                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = firebaseDatabase.getReference("employee");
 
-                                jobViewHolder userProfile = new jobViewHolder(viewHolder.mView);
+                                //jobViewHolder userProfile = model ;
 
-                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").push().setValue(userProfile.mView.toString());
-
-                              //  viewHolder.mButton.setEnabled(false);
+                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").push().setValue(model);
 
 
                             }
@@ -115,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
+        opening();
     }
+
 
     public static class jobViewHolder extends RecyclerView.ViewHolder {
         View mView;
@@ -146,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
     private void opening() {
 

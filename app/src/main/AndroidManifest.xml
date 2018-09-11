@@ -45,8 +45,13 @@
             android:name=".job_posting"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".settings"
-        android:theme="@style/navigationtheme">
+        <activity
+            android:name=".settings"
+            android:theme="@style/navigationtheme">
+        </activity>
+        <activity android:name=".job_posted">
+        </activity>
+        <activity android:name=".employee_applied_jobs">
         </activity>
     </application>
 

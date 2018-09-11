@@ -75,8 +75,8 @@ public class Secondpage extends AppCompatActivity {
 
         mskills = skills.getText().toString();
         mjobs = jobs.getText().toString();
-        UserProfile userProfile = new UserProfile(meducation, mskills, mjobs);
-        myRef.setValue(userProfile);
+       // UserProfile userProfile = new UserProfile(meducation, mskills, mjobs);
+       // myRef.setValue(userProfile);
 
 
     }

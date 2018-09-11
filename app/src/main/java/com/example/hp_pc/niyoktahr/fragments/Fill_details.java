@@ -99,7 +99,7 @@ public class Fill_details extends AppCompatActivity {
                     Educational_detailstab tab2=new Educational_detailstab();
                     return tab2;
                 case 2:
-                    Preferences_tab tab3=new Preferences_tab();
+                    experience tab3=new experience();
                     return tab3;
                 default:
                     return null;

@@ -1,70 +1,87 @@
-<android.support.constraint.ConstraintLayout
-    android:id="@+id/education"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="#ffffff"
+              android:orientation="vertical">
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-   android:background="#ffffff"
-    tools:context="com.example.hp_pc.niyoktahr.fragments.Fill_details">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_file"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etCourse"
-        android:layout_marginTop="80dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp" android:hint="Course"
-        android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        app:layout_constraintHorizontal_bias="0.44"
-        app:layout_constraintVertical_bias="0.55"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:background="@drawable/edit_file"
-        android:ems="10"
-        android:id="@+id/etUniversity"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent" android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:hint="University" app:layout_constraintBottom_toTopOf="@+id/etqualification"
-        android:layout_marginBottom="8dp" app:layout_constraintHorizontal_bias="0.44"
-        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/etCourse"
-        app:layout_constraintVertical_bias="0.47000003"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_file"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etqualification" app:layout_constraintBottom_toTopOf="@+id/btEdusumbit"
-        android:layout_marginBottom="120dp"
-        android:layout_marginEnd="16dp" app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp" android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="16dp"
+        android:id="@+id/form_education_qualification"
+        android:layout_marginTop="@dimen/form_editTextTopmargin"
+        android:layout_width="@dimen/form_editTextWidth"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/form_editTextHeight"
+        android:inputType="text"
         android:hint="Qualification"
-        app:layout_constraintHorizontal_bias="0.45"/>
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_style"
-        android:textColor="#ffffff"
-        android:id="@+id/btEdusumbit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp" android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent" android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp" app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp" android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.38"
-        app:layout_constraintVertical_bias="0.75"/>
+        android:background="@drawable/edit_file"
 
+    />
+    <EditText
+        android:id="@+id/form_education_college"
+        android:layout_marginTop="@dimen/form_editTextTopmargin"
+        android:layout_width="@dimen/form_editTextWidth"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/form_editTextHeight"
+        android:inputType="text"
+        android:hint="University/college"
+        android:background="@drawable/edit_file"
 
-</android.support.constraint.ConstraintLayout>
+    />
+    <EditText
+        android:id="@+id/form_education_passingyear"
+        android:layout_marginTop="@dimen/form_editTextTopmargin"
+        android:layout_width="@dimen/form_editTextWidth"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/form_editTextHeight"
+        android:inputType="number"
+        android:hint="Passing year"
+        android:background="@drawable/edit_file"
+
+    />
+    <EditText
+        android:id="@+id/form_education_language"
+        android:layout_marginTop="@dimen/form_editTextTopmargin"
+        android:layout_width="@dimen/form_editTextWidth"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/form_editTextHeight"
+        android:inputType="text"
+        android:hint="Language known"
+        android:background="@drawable/edit_file"
+
+    />
+
+    <EditText
+        android:id="@+id/form_education_skills"
+        android:layout_marginTop="@dimen/form_editTextTopmargin"
+        android:layout_width="@dimen/form_editTextWidth"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/form_editTextHeight"
+        android:inputType="text"
+        android:hint="skills"
+        android:background="@drawable/edit_file"
+    />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/from_education_doneBTN"
+            android:layout_width="84dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_style"
+            android:text="next"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

@@ -1,7 +1,11 @@
 package com.example.hp_pc.niyoktahr;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +35,29 @@ public class job_posting extends AppCompatActivity {
         mEditdetails = (EditText) findViewById(R.id.note_details);
         btsubmit=(Button)findViewById(R.id.btjobsubmit);
         mFirebaseAuth=FirebaseAuth.getInstance();
+        BottomNavigationView bottomNavigationView=(BottomNavigationView)findViewById(R.id.bottom_naviagtion_view_employer);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.action_home:
+                       // Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_apply:
+                        //Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(job_posting.this,job_posted.class));
+                        break;
+                    case R.id.action_profile:
+                        //Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(job_posting.this,settings.class));
+                        break;
+
+
+                }
+                return true;
+            }
+        });
         btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

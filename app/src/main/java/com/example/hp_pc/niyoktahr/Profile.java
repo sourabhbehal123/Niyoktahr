@@ -28,7 +28,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        profilepic=(ImageView)findViewById(R.id.ivProfilepic);
+        //profilepic=(ImageView)findViewById(R.id.ivProfilepic);
         profileeduaction=(TextView)findViewById(R.id.tvEducation);
         profileskills=(TextView)findViewById(R.id.tvSkills);
 
@@ -53,9 +53,9 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserProfile userProfile=dataSnapshot.getValue(UserProfile.class);
-                profileeduaction.setText(userProfile.getName());
-                profileskills.setText(userProfile.getLocation());
-                profilejobs.setText(userProfile.getDateofbirth());
+                profileeduaction.setText(userProfile.getPersonal_namecon());
+                profileskills.setText(userProfile.getPersonal_emailcon());
+                profilejobs.setText(userProfile.getPersonal_dobcon());
              //   profilecourse.setText(userProfile.getCourse());
                 //profileuniversity.setText(userProfile.getUniversity());
                 //profilequal.setText(userProfile.getQualifications());
