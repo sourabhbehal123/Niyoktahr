@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +21,8 @@ import android.widget.Toast;
 import com.example.hp_pc.niyoktahr.R;
 import com.example.hp_pc.niyoktahr.UserProfile;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by hp-pc on 8/17/2018.
@@ -118,27 +114,35 @@ public class Personal_detailstab extends Fragment {
 
         });
         firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference("employee").child(firebaseAuth.getCurrentUser().getUid()).child("Personal details");
-        ValueEventListener valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                Log.e("Here ", userProfile + "    ll");
-                personal_name.setText(userProfile.getPersonal_namecon());
-                personal_email.setText(userProfile.getPersonal_emailcon());
-                personal_location.setText(userProfile.getPersonal_locationcon());
-                personal_phone.setText(userProfile.getPersonal_phonecon());
-                personal_dob.setText(userProfile.getPersonal_dobcon());
-                //profilequal.setText(userProfile.getQualifications());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Toast.makeText(Educational_detailstab.this,databaseError.getCode(),Toast.LENGTH_SHORT).show();
-            }
-        });
+      /*  DatabaseReference databaseReference=firebaseDatabase.getReference("employee");
 
 
+
+
+           databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                        UserProfile userProfile = new UserProfile();
+                        userProfile
+
+                    }
+
+
+
+               }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                 //   Toast.makeText(getActivity(), "error occurred", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
+
+*/
         return rootView;
 
 

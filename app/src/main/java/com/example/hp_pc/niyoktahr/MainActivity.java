@@ -83,9 +83,12 @@ public class MainActivity extends AppCompatActivity {
                         (jobpost_constructor.class, R.layout.recycleview_design, jobViewHolder.class, mDatabaseReference) {
                     @Override
                     protected void populateViewHolder(final jobViewHolder viewHolder, final jobpost_constructor model, final int position) {
-                        viewHolder.setTitle(model.getJobTitle());
-                        viewHolder.setProfession(model.getJobDescription());
+                        viewHolder.setTitle(model.getDesignation());
+                        viewHolder.setProfession(model.getCompany());
                         viewHolder.setJob(model.getSalary());
+                        viewHolder.setJoblocation(model.getLocation());
+                        viewHolder.setJobdescription(model.getDescribtion());
+
 
 
                         viewHolder.mButton.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +142,14 @@ public class MainActivity extends AppCompatActivity {
             TextView post_job = (TextView) mView.findViewById(R.id.tvLocation);
             post_job.setText(job);
         }
+        public void setJoblocation(String job) {
+            TextView post_job = (TextView) mView.findViewById(R.id.tv_job_location);
+            post_job.setText(job);
+        } public void setJobdescription(String job) {
+            TextView post_job = (TextView) mView.findViewById(R.id.job_description);
+            post_job.setText(job);
+        }
+
 
     }
 
@@ -157,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e(" value here", FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()) + "     l");
 
 
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid());
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid()).child("Personal details");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

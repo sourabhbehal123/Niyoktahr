@@ -5,9 +5,7 @@ package com.example.hp_pc.niyoktahr;
  */
 
 public class jobpost_constructor{
-        public String jobTitle;
-        public String jobDescription;
-    public String salary;
+    public String designation,company,vacancy,salary,describtion,job_post_email,location,enddate;
 
     public String userid;
 
@@ -15,27 +13,40 @@ public class jobpost_constructor{
     public jobpost_constructor() {
     }
 
-    public jobpost_constructor(String jobTitle, String jobDescription, String salary, String userid) {
-        this.jobTitle = jobTitle;
-        this.jobDescription = jobDescription;
+    public jobpost_constructor(String designation, String company, String vacancy, String salary, String describtion, String job_post_email, String location, String enddate, String userid) {
+        this.designation = designation;
+        this.company = company;
+        this.vacancy = vacancy;
         this.salary = salary;
+        this.describtion = describtion;
+        this.job_post_email = job_post_email;
+        this.location = location;
+        this.enddate = enddate;
         this.userid = userid;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getDesignation() {
+        return designation;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
+    public String getCompany() {
+        return company;
     }
 
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getVacancy() {
+        return vacancy;
+    }
+
+    public void setVacancy(String vacancy) {
+        this.vacancy = vacancy;
     }
 
     public String getSalary() {
@@ -44,5 +55,45 @@ public class jobpost_constructor{
 
     public void setSalary(String salary) {
         this.salary = salary;
+    }
+
+    public String getDescribtion() {
+        return describtion;
+    }
+
+    public void setDescribtion(String describtion) {
+        this.describtion = describtion;
+    }
+
+    public String getJob_post_email() {
+        return job_post_email;
+    }
+
+    public void setJob_post_email(String job_post_email) {
+        this.job_post_email = job_post_email;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }
