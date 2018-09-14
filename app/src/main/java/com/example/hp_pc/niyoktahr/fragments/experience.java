@@ -27,11 +27,10 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class experience extends Fragment {
-    EditText city1, city2, city3;
-    Button btsumbit;
+
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
-    public String city111, city12, city13;
+
     RadioGroup radioGroup;
     RadioButton radio_fresher, radio_experience;
     Button done_btn;

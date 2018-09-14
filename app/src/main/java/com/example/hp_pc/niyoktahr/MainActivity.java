@@ -39,29 +39,27 @@ public class MainActivity extends AppCompatActivity {
     public String remove;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondone);
-        BottomNavigationView bottomNavigationView=(BottomNavigationView)findViewById(R.id.bottom_naviagtion_view);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviagtion_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.action_home:
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_apply:
-                        startActivity(new Intent(MainActivity.this,employee_applied_jobs.class));
+                        startActivity(new Intent(MainActivity.this, employee_applied_jobs.class));
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
 
                         break;
                     case R.id.action_profile:
                         Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this,settings.class));
+                        startActivity(new Intent(MainActivity.this, settings.class));
                         break;
 
 
@@ -70,10 +68,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
-    // final String userid= mAuth.getCurrentUser().getUid();
-   //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
-     mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
-     //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
+        // final String userid= mAuth.getCurrentUser().getUid();
+        //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
+
+
+     /*   final ArrayList<String>  appliedLists = new ArrayList<>();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("employee").child(mAuth.getCurrentUser().getUid()).child("applied");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    // TODO: handle the post
+                    jobpost_constructor applied = postSnapshot.getValue(jobpost_constructor.class);
+                    Log.e("Here applied ", applied.getUserid()  + "  ");
+                    appliedLists.add(applied.getUserid());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+*/
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
+        //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
         mDatabaseReference.keepSynced(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.main_job_post);
         mRecyclerView.setHasFixedSize(true);
@@ -83,13 +104,16 @@ public class MainActivity extends AppCompatActivity {
                         (jobpost_constructor.class, R.layout.recycleview_design, jobViewHolder.class, mDatabaseReference) {
                     @Override
                     protected void populateViewHolder(final jobViewHolder viewHolder, final jobpost_constructor model, final int position) {
+
+                       // if(appliedLists.contains(model.getUserid())){
+                         //   return;
+                        //}
+
                         viewHolder.setTitle(model.getDesignation());
                         viewHolder.setProfession(model.getCompany());
                         viewHolder.setJob(model.getSalary());
                         viewHolder.setJoblocation(model.getLocation());
                         viewHolder.setJobdescription(model.getDescribtion());
-
-
 
                         viewHolder.mButton.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -142,10 +166,13 @@ public class MainActivity extends AppCompatActivity {
             TextView post_job = (TextView) mView.findViewById(R.id.tvLocation);
             post_job.setText(job);
         }
+
         public void setJoblocation(String job) {
             TextView post_job = (TextView) mView.findViewById(R.id.tv_job_location);
             post_job.setText(job);
-        } public void setJobdescription(String job) {
+        }
+
+        public void setJobdescription(String job) {
             TextView post_job = (TextView) mView.findViewById(R.id.job_description);
             post_job.setText(job);
         }

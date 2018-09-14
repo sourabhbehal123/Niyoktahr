@@ -9,8 +9,6 @@ import android.widget.Button;
 import com.example.hp_pc.niyoktahr.employer_fragment.Employer_detail;
 import com.example.hp_pc.niyoktahr.fragments.Fill_details;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class employee_or_employer extends AppCompatActivity {
     Button employee;
@@ -26,11 +24,11 @@ public class employee_or_employer extends AppCompatActivity {
         employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = firebaseDatabase.getReference("employee");
-                String userid= mAuth.getCurrentUser().getUid();
+                //FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                //DatabaseReference myRef = firebaseDatabase.getReference("employee");
+                //String userid= mAuth.getCurrentUser().getUid();
               //  jobpost_constructor userProfile = new jobpost_constructor(designation,company,vacancy,salary,describtion,job_post_email,location,enddate,userid);
-                myRef.child(mAuth.getCurrentUser().getUid()).setValue(userid);
+                //myRef.child(mAuth.getCurrentUser().getUid()).setValue(userid);
 
 
                 startActivity(new Intent(employee_or_employer.this,Fill_details.class));
