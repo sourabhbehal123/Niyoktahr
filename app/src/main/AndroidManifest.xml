@@ -42,8 +42,7 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".job_posting"
-            android:theme="@style/AppTheme">
+            android:name=".job_posting">
         </activity>
         <activity
             android:name=".settings"
@@ -53,6 +52,8 @@
         </activity>
         <activity android:name=".employee_applied_jobs">
         </activity>
+        <activity android:name=".employer_verification"></activity>
+        <activity android:name=".employer_settings"></activity>
     </application>
 
 </manifest>

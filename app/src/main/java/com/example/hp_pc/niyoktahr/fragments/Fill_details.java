@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.hp_pc.niyoktahr.Educational_detailstab;
 import com.example.hp_pc.niyoktahr.R;
+import com.example.hp_pc.niyoktahr.experience;
 
 public class Fill_details extends AppCompatActivity {
 
@@ -101,6 +103,9 @@ public class Fill_details extends AppCompatActivity {
                 case 2:
                     experience tab3=new experience();
                     return tab3;
+                case 3:
+                    Preferences tab4=new Preferences();
+                    return tab4;
                 default:
                     return null;
             }
@@ -110,7 +115,7 @@ public class Fill_details extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -121,6 +126,8 @@ public class Fill_details extends AppCompatActivity {
                 case 1:
                     return "eduaction";
                 case 2:
+                    return "experience";
+                case 3:
                     return "preferences";
             }
             return null;

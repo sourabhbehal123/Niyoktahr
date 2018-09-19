@@ -7,7 +7,7 @@ package com.example.hp_pc.niyoktahr;
 public class jobpost_constructor{
     public String designation,company,vacancy,salary,describtion,job_post_email,location,enddate;
 
-    public String userid;
+    public String userid, jobId;
 
 
     public jobpost_constructor() {
@@ -23,6 +23,14 @@ public class jobpost_constructor{
         this.location = location;
         this.enddate = enddate;
         this.userid = userid;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
     public String getDesignation() {

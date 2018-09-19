@@ -14,8 +14,8 @@
     <item
         android:id="@+id/action_apply"
         android:enabled="true"
-        android:icon="@drawable/ic_mail_black_24dp"
-        android:title="Apply"
+        android:icon="@drawable/ic_work_black_24dp"
+        android:title="Applied Jobs"
         app:showAsAction="collapseActionView"
     ></item>
        <item

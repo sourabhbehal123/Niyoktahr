@@ -1,5 +1,6 @@
 package com.example.hp_pc.niyoktahr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -59,9 +60,12 @@ public class employer1 extends Fragment {
 
                     //Add code for firebase here to add data to the server
                     sendUserDetails();
-                    viewPager = (ViewPager) getActivity().findViewById(
-                            R.id.container);
-                    viewPager.setCurrentItem(1);
+                    Intent intent = new Intent(getActivity(), employer_verification.class);
+
+                    intent.putExtra("NAME",employer_form_name);
+                    intent.putExtra("PHONE",contact_employer_number);
+                    intent.putExtra("LOCATION",employer_location);
+                    startActivity(intent);
                     //  Intent intent = new Intent(getActivity(), job_posting.class);
                     // startActivity(intent);
                     Toast.makeText(getActivity(),"information sumbited",Toast.LENGTH_SHORT).show();

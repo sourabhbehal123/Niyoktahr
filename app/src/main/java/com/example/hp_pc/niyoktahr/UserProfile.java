@@ -5,57 +5,57 @@ package com.example.hp_pc.niyoktahr;
  */
 
 public class UserProfile {
-    public String  personal_namecon , personal_emailcon , personal_locationcon, personal_phonecon , personal_dobcon;
+    public String  name , email , location, phoneno , dob;
 
-    public UserProfile(String personal_namecon, String personal_emailcon, String personal_locationcon, String personal_phonecon, String personal_dobcon) {
-        this.personal_namecon = personal_namecon;
-        this.personal_emailcon = personal_emailcon;
-        this.personal_locationcon = personal_locationcon;
-        this.personal_phonecon = personal_phonecon;
-        this.personal_dobcon = personal_dobcon;
+    public UserProfile(String name, String location, String email, String phoneno, String dob) {
+        this.name = name;
+        this.location = location;
+        this.email = email;
+        this.phoneno = phoneno;
+        this.dob = dob;
     }
 
     public UserProfile() {
     }
 
-    public String getPersonal_namecon() {
-        return personal_namecon;
+    public String getName() {
+        return name;
     }
 
-    public void setPersonal_namecon(String personal_namecon) {
-        this.personal_namecon = personal_namecon;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPersonal_emailcon() {
-        return personal_emailcon;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPersonal_emailcon(String personal_emailcon) {
-        this.personal_emailcon = personal_emailcon;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPersonal_locationcon() {
-        return personal_locationcon;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPersonal_locationcon(String personal_locationcon) {
-        this.personal_locationcon = personal_locationcon;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getPersonal_phonecon() {
-        return personal_phonecon;
+    public String getPhoneno() {
+        return phoneno;
     }
 
-    public void setPersonal_phonecon(String personal_phonecon) {
-        this.personal_phonecon = personal_phonecon;
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
     }
 
-    public String getPersonal_dobcon() {
-        return personal_dobcon;
+    public String getDob() {
+        return dob;
     }
 
-    public void setPersonal_dobcon(String personal_dobcon) {
-        this.personal_dobcon = personal_dobcon;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 }
 

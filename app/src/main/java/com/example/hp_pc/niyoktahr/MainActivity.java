@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp_pc.niyoktahr.fragments.Fill_details;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +24,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private DatabaseReference mDatabaseReference;
     public String remove;
+    private ArrayList<String> appliedLists = new ArrayList<>();
+    public ArrayList<jobpost_constructor> allJobsData = new ArrayList<>();
 
 
     @Override
@@ -50,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_apply:
                         startActivity(new Intent(MainActivity.this, employee_applied_jobs.class));
-                        Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "applied jobs", Toast.LENGTH_SHORT).show();
 
                         break;
                     case R.id.action_profile:
-                        Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "settings", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, settings.class));
                         break;
 
@@ -71,34 +74,38 @@ public class MainActivity extends AppCompatActivity {
         // final String userid= mAuth.getCurrentUser().getUid();
         //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
 
+        if (mAuth.getCurrentUser() != null) {
 
-     /*   final ArrayList<String>  appliedLists = new ArrayList<>();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("employee").child(mAuth.getCurrentUser().getUid()).child("applied");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("employee").child(mAuth.getCurrentUser().getUid()).child("applied");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-                    jobpost_constructor applied = postSnapshot.getValue(jobpost_constructor.class);
-                    Log.e("Here applied ", applied.getUserid()  + "  ");
-                    appliedLists.add(applied.getUserid());
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        // TODO: handle the post
+
+                        //jobpost_constructor applied = postSnapshot.getValue(jobpost_constructor.class);
+                        Log.e("Here applied ", postSnapshot.getKey() + "  ");
+                        appliedLists.add(postSnapshot.getKey());
+                    }
+
+                    settingJobsData();
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-*/
+                }
+            });
 
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
+        }
+
+
         //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
-        mDatabaseReference.keepSynced(true);
-        mRecyclerView = (RecyclerView) findViewById(R.id.main_job_post);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //mDatabaseReference.keepSynced(true);
+
+
+        /*
         FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder> firebaseRecyclerAdapter = new
                 FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder>
                         (jobpost_constructor.class, R.layout.recycleview_design, jobViewHolder.class, mDatabaseReference) {
@@ -134,8 +141,52 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 };
-        mRecyclerView.setAdapter(firebaseRecyclerAdapter);
+        mRecyclerView.setAdapter(firebaseRecyclerAdapter);*/
         opening();
+    }
+
+    private void settingJobsData() {
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("jobs");
+
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                    jobpost_constructor jobpostConstructor = dataSnapshot1.getValue(jobpost_constructor.class);
+
+                    Log.e(" applied data", appliedLists.toString());
+                    Log.e(" applied new", dataSnapshot1.getKey());
+
+                    if (!appliedLists.contains(dataSnapshot1.getKey())) {
+
+                        jobpostConstructor.setJobId(dataSnapshot1.getKey());
+                        allJobsData.add(jobpostConstructor);
+                    }
+
+
+                    Log.e(" after applied", allJobsData.size() + "   ll");
+                }
+
+                settingAdapter();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void settingAdapter() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.main_job_post);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+        JobsAdapter jobsAdapter = new JobsAdapter(MainActivity.this, allJobsData);
+        mRecyclerView.setAdapter(jobsAdapter);
     }
 
 

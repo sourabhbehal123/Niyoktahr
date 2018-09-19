@@ -33,12 +33,11 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class Personal_detailstab extends Fragment {
-    EditText education, skills, jobs;
-    public String  personal_namecon , personal_emailcon , personal_locationcon, personal_phonecon , personal_dobcon;
-    Button button, btsumbit;
+
+
+
+    public String  name , email , location, phoneno , dob;
     FirebaseAuth firebaseAuth;
-    FirebaseAuth.AuthStateListener mAuthStateListener;
-    String name, loaction, dateofbirth;
     ViewPager viewPager;
     Button Done_personal;
     EditText personal_name , personal_email , personal_location, personal_phone , personal_dob;
@@ -120,10 +119,7 @@ public class Personal_detailstab extends Fragment {
         firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference databaseReference=firebaseDatabase.getReference("employee").child(firebaseAuth.getCurrentUser().getUid()).child("Personal details");
 
-
-
-
-            ValueEventListener valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        ValueEventListener valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                    // UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
@@ -132,11 +128,11 @@ public class Personal_detailstab extends Fragment {
                        UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
                        Log.e("Here ", userProfile + "    ll");
 
-                        personal_name.setText(userProfile.getPersonal_namecon());
-                        personal_email.setText(userProfile.getPersonal_emailcon());
-                        personal_location.setText(userProfile.getPersonal_locationcon());
-                        personal_phone.setText(userProfile.getPersonal_phonecon());
-                        personal_dob.setText(userProfile.getPersonal_dobcon());
+                        personal_name.setText(userProfile.getName());
+                        personal_email.setText(userProfile.getEmail());
+                        personal_location.setText(userProfile.getLocation());
+                        personal_phone.setText(userProfile.getPhoneno());
+                        personal_dob.setText(userProfile.getDob());
                         //profilequal.setText(userProfile.getQualifications());
 
                     }
@@ -159,13 +155,13 @@ public class Personal_detailstab extends Fragment {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference("employee");
        // personal_name , personal_email , personal_location, personal_phone , personal_dob;
-        personal_namecon = personal_name.getText().toString();
+        name = personal_name.getText().toString();
 
-        personal_emailcon = personal_email.getText().toString();
-        personal_locationcon = personal_location.getText().toString();
-        personal_phonecon = personal_phone.getText().toString();
-        personal_dobcon = personal_dob.getText().toString();
-        UserProfile userProfile = new UserProfile(personal_namecon,personal_emailcon,personal_locationcon,personal_phonecon,personal_dobcon);
+        email = personal_email.getText().toString();
+        location = personal_location.getText().toString();
+        phoneno = personal_phone.getText().toString();
+        dob = personal_dob.getText().toString();
+        UserProfile userProfile = new UserProfile(  name , email , location, phoneno , dob);
 
         myRef.child(firebaseAuth.getCurrentUser().getUid()).child("Personal details").setValue(userProfile);
 

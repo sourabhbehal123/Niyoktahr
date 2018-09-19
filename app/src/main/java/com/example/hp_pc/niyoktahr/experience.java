@@ -1,8 +1,8 @@
-package com.example.hp_pc.niyoktahr.fragments;
+package com.example.hp_pc.niyoktahr;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.hp_pc.niyoktahr.MainActivity;
-import com.example.hp_pc.niyoktahr.R;
+import com.example.hp_pc.niyoktahr.fragments.experience_constructor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,10 +29,11 @@ public class experience extends Fragment {
 
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
-
+    ViewPager viewPager;
     RadioGroup radioGroup;
     RadioButton radio_fresher, radio_experience;
     Button done_btn;
+    int exp=2;
     public String year, month, description_job, experience;
     EditText yearText, monthText, descriptionText;
     LinearLayout experience_layout;
@@ -61,10 +61,21 @@ public class experience extends Fragment {
         done_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendUserDetails();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+
+                        // add database for the experienced part here
+                        //year , month and description
+                        sendUserDetails();
+                        viewPager = (ViewPager) getActivity().findViewById(
+                                R.id.container);
+                        viewPager.setCurrentItem(3);
+
+
+
+
+
             }
+
+
         });
 
         //settin up experience buttons
@@ -102,7 +113,7 @@ public class experience extends Fragment {
                     yearText.setText(userProfile.getYear());
                     monthText.setText(userProfile.getMonth());
                     descriptionText.setText(userProfile.getDescription_job());
-                    radio_fresher.setChecked(userProfile.equals(experience));
+                    //radio_experience.setChecked(true);
 
                 }
             }
@@ -123,15 +134,29 @@ public class experience extends Fragment {
         DatabaseReference myRef = firebaseDatabase.getReference("employee");
         // public String   year , month , description_job;
         year = yearText.getText().toString();
-
         month = monthText.getText().toString();
         description_job = descriptionText.getText().toString();
         experience = radio_fresher.getText().toString();
         experience_constructor userProfile = new experience_constructor(year, month, description_job, experience);
         myRef.child(firebaseAuth.getCurrentUser().getUid()).child("Experience details").setValue(userProfile);
-
-
     }
+    private boolean is_filled(){
+        String year = yearText.getText().toString();
+        String month = monthText.getText().toString();
+        String Desc = descriptionText.getText().toString();
+
+        if(year.isEmpty()){
+            return false;
+        }
+        if(month.isEmpty() || Integer.parseInt(month)>12 ){
+            return false;
+        }
+        if(Desc.isEmpty() ){
+            return false;
+        }
+        return true;
+    }
+
 
 }
 

@@ -1,4 +1,4 @@
-package com.example.hp_pc.niyoktahr.fragments;
+package com.example.hp_pc.niyoktahr;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.hp_pc.niyoktahr.R;
+import com.example.hp_pc.niyoktahr.fragments.Education_constructor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
