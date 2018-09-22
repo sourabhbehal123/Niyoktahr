@@ -6,35 +6,38 @@
     android:id="@+id/activity_secondone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:orientation="vertical"
-
+    android:layout_weight="10"
+    android:orientation="vertical"
     tools:context="com.example.hp_pc.niyoktahr.MainActivity">
-
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_job_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:layout_weight="9"
         android:clipToPadding="false"
-        android:padding="5dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/recycleview_design"
-        android:layout_centerVertical="true" android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
+        android:padding="5dp" android:scrollbars="vertical"
+        tools:listitem="@layout/recycleview_design">
+
+    </android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_naviagtion_view"
-         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_weight="1"
         app:itemBackground="@color/colorPrimaryDark"
         app:itemIconTint="@drawable/item_icon_state"
         app:itemTextColor="@drawable/item_icon_state"
         app:menu="@menu/bottom_navigation"
 
-    ></android.support.design.widget.BottomNavigationView>
-    </LinearLayout>
+    >
+
+    </android.support.design.widget.BottomNavigationView>
+</LinearLayout>
 

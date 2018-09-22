@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hp_pc.niyoktahr.fragments.Education_constructor;
-import com.example.hp_pc.niyoktahr.fragments.Fill_details;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,11 +26,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by hp-pc on 8/5/2018.
@@ -43,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText name;
     private EditText password;
     private Button login;
-    UserProfile userProfile;
-    Education_constructor mEducation_constructor;
     private TextView userReg, forgetPassword;
     private ProgressDialog mProgressDialog;
 
@@ -216,30 +207,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (emailFlag) {
 
-
             finish();
 
             mProgressDialog.dismiss();
             startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid()).child("Personal details");
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    userProfile = dataSnapshot.getValue(UserProfile.class);
-                    mEducation_constructor=dataSnapshot.getValue(Education_constructor.class);
-                    if (userProfile==null){
-                        startActivityForResult(new Intent(LoginActivity.this, Fill_details.class), 121);
-                    }
-                    else {
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
         } else {
 
             Toast.makeText(LoginActivity.this, "please verify email", Toast.LENGTH_SHORT).show();

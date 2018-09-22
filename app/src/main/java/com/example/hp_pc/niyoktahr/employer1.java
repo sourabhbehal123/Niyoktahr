@@ -58,6 +58,8 @@ public class employer1 extends Fragment {
             public void onClick(View v) {
                 if(is_filled()) {
 
+                    Log.e(" Here comes", "true");
+
                     //Add code for firebase here to add data to the server
                     sendUserDetails();
                     Intent intent = new Intent(getActivity(), employer_verification.class);

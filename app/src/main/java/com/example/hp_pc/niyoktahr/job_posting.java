@@ -110,8 +110,9 @@ public class job_posting extends AppCompatActivity {
                     sendUserDetails();
                     sendDetails();
                     Toast.makeText(job_posting.this, "Submited", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(job_posting.this,job_posted.class));
-
+                    Intent intent = new Intent(job_posting.this,job_posted.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
 
                 }
 

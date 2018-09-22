@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hp_pc.niyoktahr.fragments.Education_constructor;
 import com.example.hp_pc.niyoktahr.fragments.Fill_details;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,13 +41,27 @@ public class MainActivity extends AppCompatActivity {
     public String remove;
     private ArrayList<String> appliedLists = new ArrayList<>();
     public ArrayList<jobpost_constructor> allJobsData = new ArrayList<>();
-
+    public static boolean running = true;
+    private static final int employerCallback = 1001;
+    private static final int educationCallback = 1002;
+    private static final int chooseScreenCallback = 1003;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondone);
+        running = true;
+        loadindScreen();
+    }
+
+    private void loadindScreen() {
+        basicInitialization();
+        authInitialization();
+        opening();
+    }
+
+    private void basicInitialization() {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviagtion_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -70,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void authInitialization() {
         mAuth = FirebaseAuth.getInstance();
         // final String userid= mAuth.getCurrentUser().getUid();
         //   String eventid=FirebaseDatabase.getInstance().getReference().child("jobs").push().getKey();
@@ -99,50 +117,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
-
-
-        //mDatabaseReference.orderByChild("userid").equalTo(mAuth.getCurrentUser().getUid());
-        //mDatabaseReference.keepSynced(true);
-
-
-        /*
-        FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder> firebaseRecyclerAdapter = new
-                FirebaseRecyclerAdapter<jobpost_constructor, jobViewHolder>
-                        (jobpost_constructor.class, R.layout.recycleview_design, jobViewHolder.class, mDatabaseReference) {
-                    @Override
-                    protected void populateViewHolder(final jobViewHolder viewHolder, final jobpost_constructor model, final int position) {
-
-                       // if(appliedLists.contains(model.getUserid())){
-                         //   return;
-                        //}
-
-                        viewHolder.setTitle(model.getDesignation());
-                        viewHolder.setProfession(model.getCompany());
-                        viewHolder.setJob(model.getSalary());
-                        viewHolder.setJoblocation(model.getLocation());
-                        viewHolder.setJobdescription(model.getDescribtion());
-
-                        viewHolder.mButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(MainActivity.this, "applied", Toast.LENGTH_SHORT).show();
-
-
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = firebaseDatabase.getReference("employee");
-
-                                //jobViewHolder userProfile = model ;
-
-                                myRef.child(mAuth.getCurrentUser().getUid()).child("applied").push().setValue(model);
-
-
-                            }
-                        });
-
-                    }
-                };
-        mRecyclerView.setAdapter(firebaseRecyclerAdapter);*/
-        opening();
     }
 
     private void settingJobsData() {
@@ -178,6 +152,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
     }
 
     private void settingAdapter() {
@@ -245,8 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
             Log.e(" value here", FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()) + "     l");
 
-
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid()).child("Personal details");
+            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid()).child("Personal details");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -258,11 +243,18 @@ public class MainActivity extends AppCompatActivity {
 
                         Log.e(" here come s here", " here");
                         // take to education page
-                        startActivityForResult(new Intent(MainActivity.this, Fill_details.class), 121);
+                        //startActivityForResult(new Intent(MainActivity.this, Fill_details.class), 121);
+                        gettingEmployerDetails();
+
 
                     } else {
+                        checkingEducationDetails();
+                        //startActivity(new Intent(MainActivity.this, job_posted.class));
                         // startActivity(new Intent(MainActivity.this, Secondpage.class));
                     }
+
+
+                    //gettingEmployerDetails();
                 }
 
                 @Override
@@ -272,21 +264,111 @@ public class MainActivity extends AppCompatActivity {
 
 
         } else {
-            startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), 27);
+
+                startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), 27);
         }
     }
 
+    private void checkingEducationDetails() {
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(mAuth.getCurrentUser().getUid()).child("eduaction details");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Education_constructor userProfile = dataSnapshot.getValue(Education_constructor.class);
+
+                Log.e("hi", userProfile + "       hfv");
+
+                if (userProfile == null) {
+
+                    Log.e(" here come s here", " here");
+                    // take to education page
+                    if (running)
+                        startActivityForResult(new Intent(MainActivity.this, Fill_details.class), educationCallback);
+
+
+                } else {
+                    //startActivity(new Intent(MainActivity.this, job_posted.class));
+                    // startActivity(new Intent(MainActivity.this, Secondpage.class));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+
+    private void gettingEmployerDetails() {
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("employer").child(mAuth.getCurrentUser().getUid()).child("Personal details");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                employer1_constructor userProfile = dataSnapshot.getValue(employer1_constructor.class);
+
+                Log.e("hi", userProfile + "       hfv");
+
+                if (userProfile == null) {
+
+                    Log.e(" here come s here", " here");
+                    // take to education page
+                    if(running)
+                    startActivityForResult(new Intent(MainActivity.this, employee_or_employer.class), chooseScreenCallback);
+
+                } else {
+
+                    if(running)
+                    startActivityForResult(new Intent(MainActivity.this, employer_verification.class), employerCallback);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 121) {
+        switch (requestCode) {
+            case educationCallback:
+                if (resultCode == RESULT_OK) {
+                    String value = (String) data.getExtras().getString("success");
+                    if (value.equals("true")) {
+                        loadindScreen();
+                        return;
+                    }
+                }
+                onBackPressed();
+                break;
+
+            case chooseScreenCallback:
+
+                if (resultCode == RESULT_OK) {
+                    String value = (String) data.getExtras().getString("success");
+                    if (value.equals("true")) {
+                        loadindScreen();
+                        return;
+                    }
+                }
+                onBackPressed();
+
+                break;
+
+            case employerCallback:
+                onBackPressed();
+                break;
 
         }
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
