@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +30,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
  * Created by hp-pc on 8/5/2018.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends CommonClass {
 
     private EditText name;
     private EditText password;
@@ -110,7 +109,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                   startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
+                  // startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
+                    CheckingEmployeePersonalInfo();
+                    finish();
                 }
             }
         };
@@ -210,7 +211,9 @@ public class LoginActivity extends AppCompatActivity {
             finish();
 
             mProgressDialog.dismiss();
-            startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
+           // startActivity(new Intent(LoginActivity.this, employee_or_employer.class));
+            CheckingEmployeePersonalInfo();
+            finish();
         } else {
 
             Toast.makeText(LoginActivity.this, "please verify email", Toast.LENGTH_SHORT).show();
