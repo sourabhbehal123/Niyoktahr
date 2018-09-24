@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.example.hp_pc.niyoktahr.R.id.personal_email_employer;
+
 /**
  * Created by hp-pc on 8/24/2018.
  */
@@ -39,7 +41,7 @@ public class employer1 extends Fragment {
     ViewPager viewPager;
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_employer_details, container, false);
         employer_name = (EditText)rootView.findViewById(R.id.personal_name_employer);
@@ -47,7 +49,7 @@ public class employer1 extends Fragment {
         company_name = (EditText)rootView.findViewById(R.id.personal_companyname_employer);
         company_website = (EditText)rootView.findViewById(R.id.personal_companyURL_employer);
         contact_number = (EditText)rootView.findViewById(R.id.personal_phone_employer);
-        contact_email = (EditText)rootView.findViewById(R.id.personal_email_employer);
+        contact_email = (EditText)rootView.findViewById(personal_email_employer);
         location = (EditText)rootView.findViewById(R.id.personal_location_employer);
 
         btsumbit = (Button)rootView. findViewById(R.id.form_employer_doneBTN);
@@ -67,6 +69,9 @@ public class employer1 extends Fragment {
                     intent.putExtra("NAME",employer_form_name);
                     intent.putExtra("PHONE",contact_employer_number);
                     intent.putExtra("LOCATION",employer_location);
+                    intent.putExtra("Email",contact_employer_email);
+                    intent.putExtra("website",company_employer_website);
+
                     startActivity(intent);
                     //  Intent intent = new Intent(getActivity(), job_posting.class);
                     // startActivity(intent);

@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -118,6 +121,33 @@ public class job_posting extends AppCompatActivity {
 
             }
         });
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviagtion_view);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+
+        {
+            @Override
+            public boolean onNavigationItemSelected (@NonNull MenuItem item){
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+
+                        Toast.makeText(job_posting.this, "home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_postjobs:
+
+                        Toast.makeText(job_posting.this, "posted jobs", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(job_posting.this,job_posted.class));
+
+                        break;
+                    case R.id.action_profile:
+                        Toast.makeText(job_posting.this, "settings", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(job_posting.this, employer_settings.class));
+                        break;
+
+
+                }
+                return true;
+            }
+        });
 
     }
     private void sendUserDetails() {
@@ -203,4 +233,8 @@ public class job_posting extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class employer_verification extends AppCompatActivity {
     Button generate_code;
-    String name , phone_number,location;
+    String name , phone_number,location,email_from,website;
     EditText verification_code;
     LinearLayout verification_layout;
 
@@ -47,28 +47,30 @@ public class employer_verification extends AppCompatActivity {
 
                 //  ------code for email sent--------
 
-                Log.i("Send email", "");
 
-                String[] TO = {"mightymajestic1997@gmail.com"};
-                String[] CC = {"shubhammauryaishu@gmail.com"};
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:"));
-                emailIntent.setType("text/plain");
+                    Log.i("Send email", "");
+
+                    String[] TO = {"niyoktahr@gmail.com"};
+                    String[] CC = {"niyoktahr@gmail.com"};
+                    Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                    emailIntent.setData(Uri.parse("mailto:"));
+                    emailIntent.setType("text/plain");
 
 
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-                emailIntent.putExtra(Intent.EXTRA_CC, CC);
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Employer NyoktaHR solutions. pvt. ltd");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Name - "+name+"\n"+"Phone - "+phone_number+"\n"+"location - "+location);
+                    emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+                    emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Employer NyoktaHR solutions. pvt. ltd");
+                    emailIntent.putExtra(Intent.EXTRA_TEXT, "Name - " + name + "\n" + "Phone - " + phone_number + "\n" + "location - " + location+ "\n" + "email - " + email_from+ "\nwebsite - " + website);
 
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                    try {
+                        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 
-                    //  Log.i("Finished sending email...", "");
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(),
-                            "There is no email client installed.", Toast.LENGTH_SHORT).show();
-                }
+                        //  Log.i("Finished sending email...", "");
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(getApplicationContext(),
+                                "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    }
+
 
 
             }
@@ -114,7 +116,14 @@ public class employer_verification extends AppCompatActivity {
         name = intent.getStringExtra("NAME");
         phone_number = intent.getStringExtra("PHONE");
         location = intent.getStringExtra("LOCATION");
+        email_from = intent.getStringExtra("Email");
+        website = intent.getStringExtra("website");
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

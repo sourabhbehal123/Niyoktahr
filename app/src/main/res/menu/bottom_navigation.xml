@@ -8,7 +8,7 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home"
+        android:title="Jobs"
         app:showAsAction="collapseActionView"
         ></item>
     <item

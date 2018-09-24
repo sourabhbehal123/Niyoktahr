@@ -10,7 +10,24 @@
     android:orientation="vertical"
     tools:context="com.example.hp_pc.niyoktahr.MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/profile_AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="0dp"
+        android:background="@color/colortheme1"
 
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jobs"
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+            android:textSize="30dp"
+        />
+    </android.support.design.widget.AppBarLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_job_post"
         android:layout_width="match_parent"

@@ -299,5 +299,8 @@ public class MainActivity extends CommonClass {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

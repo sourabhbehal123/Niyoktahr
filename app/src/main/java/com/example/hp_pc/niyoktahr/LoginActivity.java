@@ -44,6 +44,7 @@ public class LoginActivity extends CommonClass {
     GoogleApiClient mGoogleApiClient;
     FirebaseAuth.AuthStateListener mAuthStateListener;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -226,4 +227,11 @@ public class LoginActivity extends CommonClass {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    @Override
+    public void onBackPressed() {
+
+
+      finishAffinity();
+
+    }
 }
