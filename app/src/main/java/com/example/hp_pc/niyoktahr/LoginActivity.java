@@ -185,6 +185,9 @@ public class LoginActivity extends CommonClass {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.e("Here request code", requestCode +"    ll");
+        Log.e("Here result code", resultCode +"    ll");
+        Log.e("Here data code", data +"    ll");
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
